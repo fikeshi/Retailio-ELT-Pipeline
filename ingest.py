@@ -20,7 +20,7 @@ def upload_to_s3():
             #Upload the DataFrame to S3 as parquet
             wr.s3.to_parquet(
                 df = df,
-                path = f's3://{bucket}/raw/{path}',
+                path = f's3://{bucket}/raw/{name}',
                 index = False,
                 mode = 'overwrite',
                 dataset = True,

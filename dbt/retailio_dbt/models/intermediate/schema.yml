@@ -1,0 +1,53 @@
+#schema.yml documents and tests the enriched sales intermediate model ensures joins between staging models produced clean, complete data
+
+version: 2
+models:
+  - name: int_enriched_sales
+    description: "Joins clean sales data with customer details into one enriched table"
+    columns:
+
+      # identity columns
+      - name: order_id
+        description: "Unique identifier for each order"
+        tests:
+          - unique
+          - not_null
+
+      - name: customer_id
+        description: "Foreign key referencing stg_customers"
+        tests:
+          - not_null
+
+      #sales metrics
+      - name: sales_amount
+        description: "Total sales amount for the order"
+        tests:
+          - not_null
+
+      - name: profit
+        description: "Profit made on the order"
+        tests:
+          - not_null
+
+      - name: order_date
+        description: "Date the order was placed"
+        tests:
+          - not_null
+
+      # categorical columns
+      - name: region
+        description: "Sales region in lowercase"
+        tests:
+          - not_null
+
+      - name: customer_segment
+        description: "Customer segment in lowercase"
+        tests:
+          - not_null
+
+      # customer details from stg_customers join
+      - name: customer_name
+        description: "Customer full name from stg_customers"
+
+      - name: gender
+        description: "Customer gender from stg_customers"

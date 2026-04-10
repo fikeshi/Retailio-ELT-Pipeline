@@ -1,0 +1,6 @@
+retailio_dbt:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: md:Retailio_database
